@@ -20,6 +20,7 @@ const TodoItem = ({ todo, toggleCompleted }) => {
       />
       {/* Panggil function getTodoTitleStyle */}
       <p style={getTodoTitleStyle()}>{todo.title}</p>
+
     </div>
   )
 }
@@ -36,6 +37,7 @@ const styles = {
     marginRight: '10px',
     height: '18px',
     width: '18px',
+
   },
 }
 
