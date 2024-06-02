@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoItem = ({ todo, toggleCompleted }) => {
+const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
   // Definisikan function getTodoTitleStyle di sini
   const getTodoTitleStyle = () => {
     if (todo.completed === true) {
@@ -20,7 +20,11 @@ const TodoItem = ({ todo, toggleCompleted }) => {
       />
       {/* Panggil function getTodoTitleStyle */}
       <p style={getTodoTitleStyle()}>{todo.title}</p>
-
+      {/* Tambahkan sebuah button di sini */}
+      <button 
+        style={styles.button}
+        onClick={() => deleteTodo(todo.id)}
+        >x</button>
     </div>
   )
 }
@@ -30,14 +34,23 @@ const styles = {
     border: '2px solid #f4f4f4',
     fontSize: '24px',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    padding: '0 20px',
   },
   checkbox: {
-    marginRight: '10px',
     height: '18px',
     width: '18px',
-
+  },
+  button: {
+    backgroundColor: '#BB0000',
+    color: '#fff',
+    height: '30px',
+    width: '30px',
+    borderRadius: '100%',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '16px',
   },
 }
 
