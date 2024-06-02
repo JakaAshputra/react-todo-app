@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import './App.css'
-
+import Todos from './components/Todos'; 
 
 function App() {
   const [todos, setTodos] = useState([
@@ -23,15 +22,32 @@ function App() {
 
   console.log(todos)
 
+  const toggleCompleted = (todoId) => {
+    const updatedTodods = todos.map((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed 
+      }
+      return todo
+    })
+    setTodos(updatedTodods)
+  }
+
   return (
-    <div>
-      <h1>My Todo List</h1>
-      {/* Gunakan method map di sini */}
-      {todos.map((todo) => {
-        return <p key={todo.id}>{todo.title}</p>
-      })}
+    <div style={styles.container}>
+      <h1 style={styles.title}>My Todo List</h1>
+      <Todos todos={todos} toggleCompleted={toggleCompleted}/>
     </div>
   )
+}
+
+const styles = {
+  container: {
+    textAlign: 'center',
+    padding: '12px',
+  },
+  title: {
+    fontSize: '36px',
+  },
 }
 
 export default App
